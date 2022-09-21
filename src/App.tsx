@@ -22,18 +22,23 @@ export default function App() {
       setVideoMuted(false);
     }, 100);
   });
-  const scrollTo = (type: Tabs, isMobile?:boolean) => {
-    console.log("Type,", type)
+  const scrollTo = (type: Tabs, isMobile?: boolean) => {
+    console.log("Type,", type);
     switch (type) {
       case Tabs.about:
-        aboutRef.current?.scrollIntoView(isMobile ? true : {behavior: 'smooth'});
+        aboutRef.current?.scrollIntoView(
+          isMobile ? true : { behavior: "smooth" }
+        );
         break;
       case Tabs.vision:
-
-        visionRef.current?.scrollIntoView(isMobile ? true : {behavior: 'smooth'});
+        visionRef.current?.scrollIntoView(
+          isMobile ? true : { behavior: "smooth" }
+        );
         break;
       case Tabs.journey:
-        journeyRef.current?.scrollIntoView(isMobile ? true : {behavior: 'smooth'});
+        journeyRef.current?.scrollIntoView(
+          isMobile ? true : { behavior: "smooth" }
+        );
         break;
     }
   };
@@ -65,28 +70,32 @@ export default function App() {
         }
         <Box style={{ color: "white", position: "sticky" }}>
           <Toolbar />
-         
+
           {visionRef && (
-            <div ref={visionRef} style={{paddingTop:10}}>
+            <div ref={visionRef} style={{ paddingTop: 10 }}>
               <Box className={styles.card}>
+              <div style={{ textAlign: "justify" }}>
                 <p className={styles.cardTitle}>{CONTENT.VISION.HEADER}</p>
                 {CONTENT.VISION.BODY}
+                </div>
               </Box>
             </div>
           )}
-           {aboutRef && (
-            <div ref={aboutRef} style={{paddingTop:10}}>
+          {aboutRef && (
+            <div ref={aboutRef} style={{ paddingTop: 10 }}>
               <Box className={styles.card}>
                 <p className={styles.cardTitle}>{CONTENT.COLLECTION.HEADER}</p>
 
                 {CONTENT.COLLECTION.BODY}
                 <p className={styles.cardTitle}>{CONTENT.ARTIST.HEADER}</p>
-                {CONTENT.ARTIST.BODY}
+                <div style={{ textAlign: "justify" }}>
+                  {CONTENT.ARTIST.BODY}
+                </div>
               </Box>
             </div>
           )}
           {journeyRef && (
-            <div ref={journeyRef} style={{paddingTop:10}}>
+            <div ref={journeyRef} style={{ paddingTop: 10 }}>
               <Box className={styles.card}>
                 <p className={styles.cardTitle}>Journey</p>
                 <BubbleMap />
@@ -95,19 +104,24 @@ export default function App() {
           )}
         </Box>
       </Box>
-      <Paper sx={{
-    width: '100%',
-    height: '5%',
-    position: 'fixed',
-    backgroundColor: "rgba(0,0,0,0.8)",
-    paddingRight: "1.75rem",
-    bottom: 0,
-    textAlign: 'end',
-    }} component="footer" square variant="outlined">
+      <Paper
+        sx={{
+          width: "100%",
+          height: "5%",
+          position: "fixed",
+          backgroundColor: "rgba(0,0,0,0.8)",
+          paddingRight: "1.75rem",
+          bottom: 0,
+          textAlign: "end",
+        }}
+        component="footer"
+        square
+        variant="outlined"
+      >
         <Typography variant="caption" color="white">
-            Copyright ©2022 · [Created by GMWeb3 Studios]
-          </Typography>
-    </Paper>
+          Copyright ©2022 · [Created by GMWeb3 Studios]
+        </Typography>
+      </Paper>
     </Box>
   );
 }

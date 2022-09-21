@@ -150,13 +150,13 @@ export default function DrawerAppBar(props: Props) {
             >
               <img
                 src={"./twitterlogo.png"}
-                style={{ width: 25, height: 25 }}
+                style={{ width: 20, height: 20 }}
               ></img>
             </a>
             <a target="_blank" href={"https://instagram.com/snoozedsneeze"}>
               <img
                 src={"./instagramlogo.png"}
-                style={{ width: 25, height: 25 }}
+                style={{ width: 20, height: 20 }}
               ></img>
             </a>
           </Box>
