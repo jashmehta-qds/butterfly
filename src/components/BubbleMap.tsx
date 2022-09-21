@@ -22,14 +22,14 @@ const TIMELINEITEMS = [
     status: "",
     icon: undefined
   },
-  {
-    description: { title: "Airdrop Snapshot", subTitle: "25·Nov·23" },
-    info: "",
-    connector: "",
-    color: "rgba(0,0,255,0.2)",
-    status: "",
-    icon: <Cyclone />
-  },
+  // {
+  //   description: { title: "Airdrop Snapshot", subTitle: "25·Nov·23" },
+  //   info: "",
+  //   connector: "",
+  //   color: "rgba(0,0,255,0.2)",
+  //   status: "",
+  //   icon: <Cyclone />
+  // },
   {
     description: { title: "Airdrop #1", subTitle: "25·Dec·22" },
     info: "25 December",

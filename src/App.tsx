@@ -65,44 +65,23 @@ export default function App() {
         }
         <Box style={{ color: "white", position: "sticky" }}>
           <Toolbar />
-          {aboutRef && (
-            <div ref={aboutRef} style={{paddingTop:10}}>
-              <Box className={styles.card}>
-                {/* <Box className={styles.cardSpacer}>
-                  <Grid>
-                    <img
-                      style={{ borderRadius: "50px", height: 50, width: 50 }}
-                      src={"/img2.png"}
-                      alt={"1"}
-                      loading="lazy"
-                    />
-                    <img
-                      style={{ borderRadius: "50px", height: 100, width: 100 }}
-                      src={"/img3.png"}
-                      alt={"1"}
-                      loading="lazy"
-                    />
-                    <img
-                      style={{ borderRadius: "50px", height: 50, width: 50 }}
-                      src={"/img2.png"}
-                      alt={"1"}
-                      loading="lazy"
-                    />
-                  </Grid>
-                </Box> */}
-                <p className={styles.cardTitle}>{CONTENT.COLLECTION.HEADER}</p>
-
-                {CONTENT.COLLECTION.BODY}
-                <p className={styles.cardTitle}>{CONTENT.ARTIST.HEADER}</p>
-                {CONTENT.ARTIST.BODY}
-              </Box>
-            </div>
-          )}
+         
           {visionRef && (
             <div ref={visionRef} style={{paddingTop:10}}>
               <Box className={styles.card}>
                 <p className={styles.cardTitle}>{CONTENT.VISION.HEADER}</p>
                 {CONTENT.VISION.BODY}
+              </Box>
+            </div>
+          )}
+           {aboutRef && (
+            <div ref={aboutRef} style={{paddingTop:10}}>
+              <Box className={styles.card}>
+                <p className={styles.cardTitle}>{CONTENT.COLLECTION.HEADER}</p>
+
+                {CONTENT.COLLECTION.BODY}
+                <p className={styles.cardTitle}>{CONTENT.ARTIST.HEADER}</p>
+                {CONTENT.ARTIST.BODY}
               </Box>
             </div>
           )}

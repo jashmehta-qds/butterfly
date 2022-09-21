@@ -14,8 +14,8 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import styles from "./styles.module.css";
 export enum Tabs {
-  about = "About",
   vision = "Vision",
+  about = "About",
   journey = "Journey",
 }
 interface Props {
