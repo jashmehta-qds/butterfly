@@ -28,7 +28,7 @@ interface Props {
 }
 
 const drawerWidth = "100%";
-const navItems: Tabs[] = [Tabs.about, Tabs.vision, Tabs.journey];
+const navItems: Tabs[] = [Tabs.vision, Tabs.about, Tabs.journey];
 
 export default function DrawerAppBar(props: Props) {
   const { window } = props;
@@ -121,7 +121,7 @@ export default function DrawerAppBar(props: Props) {
                 height: 75,
                 width: 75,
                 marginLeft: "calc(50% - 62px)",
-                position: "absolute"
+                position: "absolute",
               }}
               src={"/logo720.png"}
               alt={"1"}

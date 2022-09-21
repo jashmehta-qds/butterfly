@@ -8,20 +8,19 @@ export const CONTENT = {
         <p>
           This <b>on-chain genesis collection </b> comprises{" "}
           <b>33 butterflies </b> within their respective bubbles, oblivious to
-          their surroundings, each in a <b>24 x 24 pixel grid </b> This being
-          the smallest grid size, the artist seeks the collectors take a leap of
-          faith into the Butterfly Bubble ecosystem on the Ethereum blockchain
-          (PoS).
+          their surroundings, each in a <b>24 x 24 pixel grid.</b> The artist
+          invites you to take a leap of faith into the Butterfly Bubble
+          ecosystem on the Ethereum blockchain (PoS).
         </p>
         <p>
-          Each butterfly owned enables its collector to receive{" "}
+          Each butterfly enables its collector to receive{" "}
           <b>future airdrops </b>
-          which will be minted and stored under a separate collection on a
-          InterPlanetary File System <b>(IPFS) </b>. There will be a total of{" "}
-          <b>13 airdrops </b> for each genesis butterfly over <b>8 years </b>.
-          This would make them a <b>total of 14 butterflies </b>, each butterfly
-          representing a day in the <b>lifespan of a butterfly </b>(usually{" "}
-          <b>14 days</b>).
+          which will be minted and stored under a separate collection on Inter
+          Planetary File System <b>(IPFS)</b>. There will be a total of{" "}
+          <b>13 airdrops </b> for each genesis butterfly over <b>8 years</b>.
+          This would make them a <b>total of 14 butterflies per set </b>, each
+          butterfly representing a day in the average
+          <b> lifespan of a butterfly.</b>
         </p>
         <p>
           With each airdrop, the <b>pixel grid </b> that the butterfly and
@@ -72,7 +71,7 @@ export const CONTENT = {
           <b>Reliance </b> at the <b>Mumbai Metro rail yard </b>.
         </p>
         <p>
-          Painting these <b>walls as massive canvases </b>. was fundamental to
+          Painting these <b>walls as massive canvases </b>was fundamental to
           SNZ’s art practice which demanded discipline, dexterity and composure
           without compromising his innocence to confront ideas in a playful
           manner. His visual vocabulary reflects various gradients, tones and
@@ -84,46 +83,25 @@ export const CONTENT = {
           <b>complete disintegration </b>
           that a butterfly went through, evolving from a caterpillar. This
           enabled him to think flexibly growing up, while he was required to
-          disintegrate his conviction from time to time.
+          disintegrate and reintegrate his conviction from time to time.
         </p>
         <p>
           Shortly after he collected his first NFT by an artist named{" "}
           <b>NFN Kalyan </b>
-          in <b>July 2020 </b>, he returned to Mumbai. SNZ credits NFN for
-          playing a pivotal role in his own creative journey. Although much of
-          what we know of the NFT space now wasn’t known at the time, they
-          anticipated a paradigm shift. In the early conversation around
-          decentralization in creativity, words such as ambition, innovation,
-          collaboration, autonomy, longevity, provenance, validation,
-          transparency, power shifts and such bore lots of weight. Online
-          communication in all formats emerged as the powerful tool it was, with
-          the lockdowns extending indefinitely. It was also when he adopted the
-          pseudonym ‘Snoozed Sneeze’ as it is medically detrimental to snooze a
-          sneeze - akin to being untruthful or holding back. Few other human
-          reactions are more genuine than a sneeze. He longed for{" "}
+          in <b>July 2020 </b>, he returned to Mumbai.
+          <br />
+          SNZ credits NFN for playing a pivotal role in his own creative
+          journey. Although much of what we know of the NFT space now wasn’t
+          known at the time, they anticipated a paradigm shift. In the early
+          conversation around decentralization in creativity, words such as
+          ambition, innovation, collaboration, autonomy, longevity, provenance,
+          validation, transparency, power shifts and such bore lots of weight.
+          Online communication in all formats emerged as the powerful tool it
+          was, with the lockdowns extending indefinitely. It was also when he
+          adopted the pseudonym ‘Snoozed Sneeze’ as it is medically detrimental
+          to snooze a sneeze - akin to being untruthful or holding back. Few
+          other human reactions are more genuine than a sneeze. He longed for{" "}
           <b>honest discourse </b> through his work.
-        </p>
-      </>
-    ),
-    FOOTER: [
-      `It was also when I adopted the pseudonym ‘Snoozed Sneeze’ as it is medically detrimental to snooze sneezes - just as being untruthful or holding back is. Few other human reactions are as genuine as a sneeze.`,
-      `I felt like I’d been snoozed on several occasions and longed for honest discourse.`,
-    ],
-  },
-  VISION: {
-    HEADER: `Vision`,
-    BODY: (
-      <>
-        <p>
-          Butterfly Bubble as a collection that evolves over <b>8 years </b>
-          shall <b>contextualize </b> Snoozed Sneeze’s <b>perception </b> and{" "}
-          <b>art practice </b> as he summarizes his experience related to the
-          power of conviction. He wishes for the viewers to be able to see each
-          butterfly make a long trail of breadcrumbs that can define their Time
-          spent participating in this experiment as memorable segments. A lot of
-          memories are made between when a child is born and is finally eight
-          years old. The collection is an attempt at{" "}
-          <b>imprinting these memories along with the art itself. </b>
         </p>
         <p>
           {" "}
@@ -137,24 +115,44 @@ export const CONTENT = {
           them (‘RISKY BIZKITS’ - September 2020, ‘MiNES FOR MiNDS’ - December
           2021).
         </p>
+      </>
+    ),
+    FOOTER: [
+      `It was also when I adopted the pseudonym ‘Snoozed Sneeze’ as it is medically detrimental to snooze sneezes - just as being untruthful or holding back is. Few other human reactions are as genuine as a sneeze.`,
+      `I felt like I’d been snoozed on several occasions and longed for honest discourse.`,
+    ],
+  },
+  VISION: {
+    HEADER: `Vision`,
+    BODY: (
+      <>
         <p>
-          SNZ finds human nature to be <b>pendulous </b> due to our ability to
-          conceive numerous options in any situation, synonymous to a{" "}
+          <b>Butterfly Bubble</b>, an <b>art</b> collection by the artist{" "}
+          <b>Snoozed Sneeze</b>, shall evolve over <b>8 years</b>{" "}
+          contextualizing his perception and art practice as he summarizes his
+          experience with <b>conviction.</b> The collection is an attempt at
+          encouraging its collectors to <b>imprint memorable moments</b> over
+          these years as the art continues to compound.
+        </p>
+        <p>
+          SNZ finds human nature to be <b>inevitably pendulous </b> due to our
+          conception of numerous options in any situation, synonymous to a{" "}
           <b>
             pendulum bob swinging in circular motion creating an illusion of
             forward momentum{" "}
           </b>
-          when in fact we might be looping up as we remain suspended by several
-          limiting forces beyond our reach. Imprisoned by our freedom of choice,
-          we repeat our mistakes, trade off the pain for a bit of the pleasure
-          and justify it all as we run through our mind maze.
+          when instead we may be looping while we remain suspended by several
+          limiting forces beyond our comprehension.
+          <br /> Imprisoned by our freedom of choice, we repeat our mistakes,
+          trade off the pain for a bit of pleasure, justify it all as we run
+          through our mind maze.
         </p>
         <p>
           {" "}
           <b>
-            Buoyant with hope for a healthy future and anchored by regrets, he
-            intends for his work to contribute to contemporary voices about the
-            conformity of culture and meaning or the cultivation of the same.{" "}
+            Buoyant with hope and anchored by regrets, he wishes his work
+            contributes to contemporary voices about the conformity of culture
+            and meaning or the cultivation of the same.{" "}
           </b>
         </p>
       </>
