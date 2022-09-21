@@ -85,8 +85,9 @@ export default function App() {
             <div ref={aboutRef} style={{ paddingTop: 10 }}>
               <Box className={styles.card}>
                 <p className={styles.cardTitle}>{CONTENT.COLLECTION.HEADER}</p>
-
+                <div style={{ textAlign: "justify" }}>
                 {CONTENT.COLLECTION.BODY}
+                </div>
                 <p className={styles.cardTitle}>{CONTENT.ARTIST.HEADER}</p>
                 <div style={{ textAlign: "justify" }}>
                   {CONTENT.ARTIST.BODY}
