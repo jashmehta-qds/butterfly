@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Quantico");
+
+.logofont {
+  font-family: "Quantico", cursive;
+  font-size: x-large;
+}
+
+.customfont {
+  font-family: "Quantico", cursive;
+}
+
+body, p {
+    font-family: 'Quantico';
+}
+
+.video-wrapper {
+  position: relative;
+  overflow: scroll;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  margin: 5% 20% 20%;
+  padding: 20px;
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 8px;
+}
+
+.cardSpacer {
+    /* background-color: rgba(0,0,0,0.6); */
+    border-radius: 8px;
+    text-align  : center;
+    vertical-align: middle;
+    filter:brightness(75%)
+  }
+
+.cardTitle {
+  font-family: "Quantico", cursive;
+  text-align: center;
+  font-size: xx-large;
+}
+
+.cardBody {
+    text-align: justify;
+}
+
+@media screen and (max-width: 900px) {
+    .card {
+        margin: 10% 5%;
+    }
+  }
