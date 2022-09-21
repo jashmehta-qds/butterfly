@@ -57,7 +57,7 @@ export default function App() {
             autoPlay
             muted
             playsInline={true}
-            controls
+            controls={false}
             style={{
               width: "100%",
               height: "100%",
