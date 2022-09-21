@@ -13,6 +13,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "latest",
+    "serve": "^14.0.1",
     "typescript": "latest"
   },
   "scripts": {
