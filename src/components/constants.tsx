@@ -107,7 +107,7 @@ export const CONTENT = {
           <b>inevitability of time </b> (<b>‘Patients of Time’ </b>- April
           2021), <b>identifying ourselves </b> (<b>‘OG SUGGA’</b> September
           2020,
-          <p>‘Epigenetics’ </p>- April 2021) and{" "}
+          <b>‘Epigenetics’ </b>- April 2021) and{" "}
           <b>acknowledging our dissonance </b> as we spin up our webs of
           perception and find ourselves trapped in them (<b>‘RISKY BIZKITS’</b>{" "}
           - September 2020, <b>‘MiNES FOR MiNDS’</b> - December 2021).
