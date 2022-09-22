@@ -122,10 +122,9 @@ export default function App() {
           width: "100%",
           height: "5%",
           position: "fixed",
-          backgroundColor: "rgba(0,0,0,0.8)",
-          paddingRight: "1.75rem",
+          backgroundColor: "rgba(0,0,0,0.7)",
           bottom: 0,
-          textAlign: "end",
+          textAlign: "center",
         }}
         component="footer"
         square
