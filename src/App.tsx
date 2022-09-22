@@ -108,7 +108,7 @@ export default function App() {
             </div>
           )}
           {journeyRef && (
-            <div ref={journeyRef} style={{ paddingTop: 10 }}>
+            <div ref={journeyRef} style={{ paddingTop: 10, paddingBottom: "20%" }}>
               <Box className={styles.card}>
                 <p className={styles.cardTitle}>Journey</p>
                 <BubbleMap />
