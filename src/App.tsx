@@ -13,8 +13,9 @@ import DrawerAppBar, { Tabs } from "./components/TopBar";
 export default function App() {
   // const video = React.useRef<HTMLVideoElement>(null);
   const [videoMuted, setVideoMuted] = React.useState<boolean>(true);
-  const aboutRef = React.useRef<HTMLDivElement>(null);
+  const collectionRef = React.useRef<HTMLDivElement>(null);
   const visionRef = React.useRef<HTMLDivElement>(null);
+  const artistRef = React.useRef<HTMLDivElement>(null);
   const journeyRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -25,13 +26,18 @@ export default function App() {
   const scrollTo = (type: Tabs, isMobile?: boolean) => {
     console.log("Type,", type);
     switch (type) {
-      case Tabs.about:
-        aboutRef.current?.scrollIntoView(
+      case Tabs.collection:
+        collectionRef.current?.scrollIntoView(
           isMobile ? true : { behavior: "smooth" }
         );
         break;
       case Tabs.vision:
         visionRef.current?.scrollIntoView(
+          isMobile ? true : { behavior: "smooth" }
+        );
+        break;
+      case Tabs.artist:
+        artistRef.current?.scrollIntoView(
           isMobile ? true : { behavior: "smooth" }
         );
         break;
@@ -71,23 +77,29 @@ export default function App() {
         <Box style={{ color: "white", position: "sticky" }}>
           <Toolbar />
 
-          {visionRef && (
-            <div ref={visionRef} style={{ paddingTop: 10 }}>
+          {collectionRef && (
+            <div ref={collectionRef} style={{ paddingTop: 10 }}>
               <Box className={styles.card}>
-              <div style={{ textAlign: "justify" }}>
-                <p className={styles.cardTitle}>{CONTENT.VISION.HEADER}</p>
-                {CONTENT.VISION.BODY}
+                <p className={styles.cardTitle}>{CONTENT.COLLECTION.HEADER}</p>
+                <div style={{ textAlign: "justify" }}>
+                  {CONTENT.COLLECTION.BODY}
                 </div>
               </Box>
             </div>
           )}
-          {aboutRef && (
-            <div ref={aboutRef} style={{ paddingTop: 10 }}>
+          {visionRef && (
+            <div ref={visionRef} style={{ paddingTop: 10 }}>
               <Box className={styles.card}>
-                <p className={styles.cardTitle}>{CONTENT.COLLECTION.HEADER}</p>
                 <div style={{ textAlign: "justify" }}>
-                {CONTENT.COLLECTION.BODY}
+                  <p className={styles.cardTitle}>{CONTENT.VISION.HEADER}</p>
+                  {CONTENT.VISION.BODY}
                 </div>
+              </Box>
+            </div>
+          )}
+          {artistRef && (
+            <div ref={artistRef} style={{ paddingTop: 10 }}>
+              <Box className={styles.card}>
                 <p className={styles.cardTitle}>{CONTENT.ARTIST.HEADER}</p>
                 <div style={{ textAlign: "justify" }}>
                   {CONTENT.ARTIST.BODY}

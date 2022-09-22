@@ -14,8 +14,9 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import styles from "./styles.module.css";
 export enum Tabs {
+  collection = "Collection",
   vision = "Vision",
-  about = "About",
+  artist = "Artist",
   journey = "Journey",
 }
 interface Props {
@@ -28,7 +29,7 @@ interface Props {
 }
 
 const drawerWidth = "100%";
-const navItems: Tabs[] = [Tabs.vision, Tabs.about, Tabs.journey];
+const navItems: Tabs[] = [Tabs.collection, Tabs.vision, Tabs.artist, Tabs.journey];
 
 export default function DrawerAppBar(props: Props) {
   const { window } = props;

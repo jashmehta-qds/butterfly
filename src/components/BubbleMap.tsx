@@ -15,7 +15,7 @@ import { Box } from "@mui/material";
 
 const TIMELINEITEMS = [
   {
-    description: { title: "Genesis Mint", subTitle: "30·Sep·22" },
+    description: { title: "Genesis", subTitle: "30·Sep·22" },
     info: "",
     connector: "24 x 24",
     color: "rgba(0,255,255,0.2)",
