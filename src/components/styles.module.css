@@ -30,11 +30,12 @@ body, p {
 }
 
 .cardOpaque {
-  margin: 5% 20% 20%;
-  padding: 20px;
+  padding-top: 0px;
+  margin-bottom: 20%;
   background-color: rgba(0,0,0,.9);
   border-radius: 8px;
   text-align: center;
+  margin-top: -10%;
 }
 
 .cardSpacer {

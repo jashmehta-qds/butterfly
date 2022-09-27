@@ -88,8 +88,11 @@ export default function App() {
               <Box className={styles.cardOpaque}>
                   <img
                     src={"./democratization.png"}
-                    style={{ height: "75%", width: "75%" }}
+                    style={{ height: "70%", width: "70%", maxHeight:700, maxWidth:700 }}
                   />
+                  <p>
+                  For instance, this is one of the 33 butterflies in the collection
+                  </p>
               </Box>
             </div>
           )}
