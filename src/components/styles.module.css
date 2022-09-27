@@ -29,6 +29,14 @@ body, p {
   border-radius: 8px;
 }
 
+.cardOpaque {
+  margin: 5% 20% 20%;
+  padding: 20px;
+  background-color: rgba(0,0,0,.9);
+  border-radius: 8px;
+  text-align: center;
+}
+
 .cardSpacer {
     /* background-color: rgba(0,0,0,0.6); */
     border-radius: 8px;

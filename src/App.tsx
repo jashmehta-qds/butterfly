@@ -85,6 +85,12 @@ export default function App() {
                   {CONTENT.COLLECTION.BODY}
                 </div>
               </Box>
+              <Box className={styles.cardOpaque}>
+                  <img
+                    src={"./democratization.png"}
+                    style={{ height: "75%", width: "75%" }}
+                  />
+              </Box>
             </div>
           )}
           {visionRef && (
@@ -108,7 +114,10 @@ export default function App() {
             </div>
           )}
           {journeyRef && (
-            <div ref={journeyRef} style={{ paddingTop: 10, paddingBottom: "20%" }}>
+            <div
+              ref={journeyRef}
+              style={{ paddingTop: 10, paddingBottom: "20%" }}
+            >
               <Box className={styles.card}>
                 <p className={styles.cardTitle}>Journey</p>
                 <BubbleMap />
