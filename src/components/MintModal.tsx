@@ -19,6 +19,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
+  maxWidth:"80%",
   bgcolor: "background.paper",
   border: "2px solid #fff",
   borderRadius: 6,
@@ -64,11 +65,6 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
     minusBtnColor: string;
   }>({ plusBtnColor: "black", minusBtnColor: "lightgray" });
   const [totalCount, setTotalCount] = React.useState(1);
-  const [authMethod, setAuthMethod] = React.useState<
-    "metamask" | "walletconnect" | ""
-  >("");
-  const [transaction, setTransaction] =
-    React.useState<Moralis.ExecuteFunctionResult>();
   const [totalAvailableSupply, setTotalAvailableSupply] =
     React.useState("????");
   const incrementCount = () => {
@@ -91,11 +87,9 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
   });
 
   useEffect(() => {
-    setTimeout(() => {
-      supply.fetch();
-    }, 2000);
-    logout();
-  }, []);
+    if (isAuthenticated) supply.fetch();
+  }, [isAuthenticated]);
+
 
   useEffect(() => {
     if (totalCount > 2) {
@@ -140,7 +134,7 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
                   <Avatar
                     onClick={() =>
                       authenticate({
-                        signingMessage: "Welcome to Butterfly Bubble",
+                        signingMessage: "Welcome to Butterfly Bubble by SnoozedSneeze",
                       })
                     }
                     src={"./metamask.png"}
@@ -151,7 +145,7 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
                     onClick={() => {
                       authenticate({
                         provider: "wc",
-                        signingMessage: "Welcome to Butterfly Bubble",
+                        signingMessage: "Welcome to Butterfly Bubble by SnoozedSneeze",
                       });
                     }}
                     src={"./walletconnect.jpeg"}
@@ -208,7 +202,7 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
                     <p style={{ padding: 0, margin: 0 }}>Disconnect</p>
                   </Button>
                 </p>
-                {error && alert(error.message)}
+                {error && !error.message.includes("MetaMask Tx Signature: User denied transaction signature.") && alert(error.message)}
               </>
             )}
           </Box>
