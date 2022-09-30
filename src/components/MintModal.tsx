@@ -7,6 +7,24 @@ import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useEffect } from "react";
 import styles from "./styles.module.css";
+import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
+import { ListItemAvatar, Avatar } from "@mui/material";
+import { ABI } from "./abi";
+import Moralis from "moralis-v1";
+const CONTRACT_ADDRESS = "0x884B240451De381Cf15565A651D46283B6bDEb8F";
+
+const readTotalSupply = {
+  contractAddress: CONTRACT_ADDRESS,
+  functionName: "totalSupply",
+  abi: ABI,
+};
+
+const readIsMintingOn = {
+  contractAddress: CONTRACT_ADDRESS,
+  functionName: "isMintingOn",
+  abi: ABI,
+};
+
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -41,20 +59,57 @@ const mintBtn = {
   backgroundColor: "rgba(255,255,255,0.1)",
 };
 
+const disconnectBtn = {
+  marginTop: "1.5rem",
+  backgroundColor: "rgba(255,255,255,0.05)",
+};
+
 interface MintModalProps {
   isOpen: boolean;
   onClose(): void;
 }
 
 const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
+  const { authenticate, isAuthenticated, user, logout } = useMoralis();
   const [buttonStyles, setButtonStyles] = React.useState<{
     plusBtnColor: string;
     minusBtnColor: string;
   }>({ plusBtnColor: "black", minusBtnColor: "lightgray" });
   const [totalCount, setTotalCount] = React.useState(1);
+  const [authMethod, setAuthMethod] = React.useState<
+    "metamask" | "walletconnect" | ""
+  >("");
+  const [transaction, setTransaction] =
+    React.useState<Moralis.ExecuteFunctionResult>();
+  const [totalAvailableSupply, setTotalAvailableSupply] =
+    React.useState("????");
   const incrementCount = () => {
     if (totalCount < 3) setTotalCount((res) => (res += 1));
   };
+  const { data, error, fetch, isFetching, isLoading } = useWeb3ExecuteFunction({
+    abi: ABI,
+    contractAddress: CONTRACT_ADDRESS,
+    functionName: "mint",
+    params: {
+      quantity: totalCount,
+    },
+    msgValue: Moralis.Units.ETH(`${totalCount * 0.25}`.slice(0, 7)),
+  });
+
+  const supply = useWeb3ExecuteFunction({
+    abi: ABI,
+    contractAddress: CONTRACT_ADDRESS,
+    functionName: "totalSupply",
+  });
+
+  useEffect(() => {
+    setTimeout(() => {
+      supply.fetch();
+    }, 2000);
+    logout();
+  }, []);
+
+  const onMint = () => {};
 
   useEffect(() => {
     if (totalCount > 2) {
@@ -84,39 +139,94 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <h2>Butterfly Bubble</h2>
-          <p> [ 0 / 33 minted ]</p>
-          <img
-            style={{ marginTop: "1rem", height: 100, width: 100 }}
-            src={"/logo720.png"}
-            alt={"1"}
-            loading="lazy"
-          />
-          <div style={mint}>
-            <RemoveCircleOutlineIcon
-              sx={{
-                color: buttonStyles.minusBtnColor,
-                cursor: buttonStyles.minusBtnColor === "white" ? "pointer" : "",
-              }}
-              onClick={() => decrementCount()}
-            />
-            <div style={mintCount}>
-              <p>{totalCount}</p>
-            </div>
-            <AddCircleOutlineIcon
-              sx={{
-                color: buttonStyles.plusBtnColor,
-                cursor: buttonStyles.plusBtnColor === "white" ? "pointer" : "",
-              }}
-              onClick={() => incrementCount()}
-            />
-          </div>
-          <p>Total Cost : {(totalCount * 0.25).toFixed(2)} Ξ </p>
-          <Button variant="contained" style={mintBtn}>
-            Mint
-          </Button>
-        </Box>
+        {
+          <Box sx={style}>
+            {!isAuthenticated && (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: 10,
+                  gap: 50,
+                }}
+              >
+                <ListItemAvatar>
+                  <Avatar
+                    onClick={() =>
+                      authenticate({
+                        signingMessage: "Welcome to Butterfly Bubble",
+                      })
+                    }
+                    src={"./metamask.png"}
+                  ></Avatar>
+                </ListItemAvatar>
+                <ListItemAvatar>
+                  <Avatar
+                    onClick={() => {
+                      authenticate({
+                        provider: "wc",
+                        signingMessage: "Welcome to Butterfly Bubble",
+                      });
+                    }}
+                    src={"./walletconnect.jpeg"}
+                  ></Avatar>
+                </ListItemAvatar>
+              </div>
+            )}
+            {isAuthenticated && (
+              <>
+                <h2>Butterfly Bubble</h2>
+                <p> {Number(supply.data)} / 33 Minted</p>
+                <img
+                  style={{ marginTop: "1rem", height: 100, width: 100 }}
+                  src={"/logo720.png"}
+                  alt={"1"}
+                  loading="lazy"
+                />
+                <div style={mint}>
+                  <RemoveCircleOutlineIcon
+                    sx={{
+                      color: buttonStyles.minusBtnColor,
+                      cursor:
+                        buttonStyles.minusBtnColor === "white" ? "pointer" : "",
+                    }}
+                    onClick={() => decrementCount()}
+                  />
+                  <div style={mintCount}>
+                    <p>{totalCount}</p>
+                  </div>
+                  <AddCircleOutlineIcon
+                    sx={{
+                      color: buttonStyles.plusBtnColor,
+                      cursor:
+                        buttonStyles.plusBtnColor === "white" ? "pointer" : "",
+                    }}
+                    onClick={() => incrementCount()}
+                  />
+                </div>
+                <p>Total Cost : {(totalCount * 0.25).toFixed(2)} Ξ </p>
+                <Button
+                  variant="contained"
+                  style={mintBtn}
+                  disabled={isFetching}
+                  onClick={() => fetch()}
+                >
+                  <p style={{ padding: 0, margin: 0 }}>Mint</p>
+                </Button>
+                <p style={{ marginTop: -10 }}>
+                  <Button
+                    variant="contained"
+                    style={disconnectBtn}
+                    onClick={() => logout()}
+                  >
+                    <p style={{ padding: 0, margin: 0 }}>Disconnect</p>
+                  </Button>
+                </p>
+                {error && alert(error.message)}
+              </>
+            )}
+          </Box>
+        }
       </Modal>
     </>
   );

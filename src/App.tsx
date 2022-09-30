@@ -1,10 +1,7 @@
 import * as React from "react";
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
-import ProTip from "./ProTip";
-import { ImageList, Toolbar, ImageListItem, Grid, Paper } from "@mui/material";
+import { Toolbar, Paper } from "@mui/material";
 import styles from "./components/styles.module.css";
 import { CONTENT } from "./components/constants";
 import BubbleMap from "./components/BubbleMap";
@@ -25,7 +22,6 @@ export default function App() {
   };
 
   const onMintOpen = () => {
-    console.log("hello");
     setMintOpen(true);
   };
   React.useEffect(() => {
