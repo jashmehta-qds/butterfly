@@ -66,7 +66,7 @@ export default function DrawerAppBar(props: Props) {
               onClick={() => {
                 console.log("clicked", item);
                 props.onMenuClick(item, true);
-                props.onMintOpen();
+                if(item === Tabs.mint)props.onMintOpen();
               }}
               sx={{ textAlign: "center", justifyContent:"center" }}
             >
@@ -152,7 +152,7 @@ export default function DrawerAppBar(props: Props) {
                 onClick={() => {
                   console.log("clicked", item);
                   props.onMenuClick(item);
-                  props.onMintOpen();
+                  if(item === Tabs.mint)props.onMintOpen();
                 }}
                 key={item}
                 sx={{ color: "#fff", alignContent:"center" }}
