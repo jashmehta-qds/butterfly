@@ -101,9 +101,10 @@ export default function App() {
                     maxWidth: 700,
                   }}
                 />
-                <p>
+                <p style={{paddingBottom: 20}}>
                   For instance, this is one of the 33 butterflies in the
                   collection
+                  
                 </p>
               </Box>
             </div>
