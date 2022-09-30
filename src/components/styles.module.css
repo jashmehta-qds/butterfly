@@ -9,8 +9,10 @@
   font-family: "Quantico", cursive;
 }
 
-body, p {
-    font-family: 'Quantico';
+body,
+p,
+h2 {
+  font-family: "Quantico";
 }
 
 .video-wrapper {
@@ -25,26 +27,26 @@ body, p {
 .card {
   margin: 5% 20% 20%;
   padding: 20px;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 8px;
 }
 
 .cardOpaque {
   padding-top: 0px;
   margin-bottom: 20%;
-  background-color: rgba(0,0,0,.9);
+  background-color: rgba(0, 0, 0, 0.9);
   border-radius: 8px;
   text-align: center;
   margin-top: -10%;
 }
 
 .cardSpacer {
-    /* background-color: rgba(0,0,0,0.6); */
-    border-radius: 8px;
-    text-align  : center;
-    vertical-align: middle;
-    filter:brightness(75%)
-  }
+  /* background-color: rgba(0,0,0,0.6); */
+  border-radius: 8px;
+  text-align: center;
+  vertical-align: middle;
+  filter: brightness(75%);
+}
 
 .cardTitle {
   font-family: "Quantico", cursive;
@@ -53,11 +55,11 @@ body, p {
 }
 
 .cardBody {
-    text-align: justify;
+  text-align: justify;
 }
 
 @media screen and (max-width: 900px) {
-    .card {
-        margin: 10% 5%;
-    }
+  .card {
+    margin: 10% 5%;
   }
+}

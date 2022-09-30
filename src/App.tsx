@@ -9,6 +9,7 @@ import styles from "./components/styles.module.css";
 import { CONTENT } from "./components/constants";
 import BubbleMap from "./components/BubbleMap";
 import DrawerAppBar, { Tabs } from "./components/TopBar";
+import MintModal from "./components/MintModal";
 
 export default function App() {
   // const video = React.useRef<HTMLVideoElement>(null);
@@ -17,7 +18,16 @@ export default function App() {
   const visionRef = React.useRef<HTMLDivElement>(null);
   const artistRef = React.useRef<HTMLDivElement>(null);
   const journeyRef = React.useRef<HTMLDivElement>(null);
+  const [mintOpen, setMintOpen] = React.useState(false);
 
+  const onMintClose = () => {
+    setMintOpen(false);
+  };
+
+  const onMintOpen = () => {
+    console.log("hello");
+    setMintOpen(true);
+  };
   React.useEffect(() => {
     setTimeout(() => {
       setVideoMuted(false);
@@ -50,7 +60,7 @@ export default function App() {
   };
   return (
     <Box sx={{ display: "flex" }}>
-      <DrawerAppBar onMenuClick={scrollTo} />
+      <DrawerAppBar onMenuClick={scrollTo} onMintOpen={onMintOpen} />
       <Box
         component="main"
         sx={{ p: 0, width: "100%", height: "100vh", background: "black" }}
@@ -86,16 +96,23 @@ export default function App() {
                 </div>
               </Box>
               <Box className={styles.cardOpaque}>
-                  <img
-                    src={"./democratization.png"}
-                    style={{ height: "70%", width: "70%", maxHeight:700, maxWidth:700 }}
-                  />
-                  <p>
-                  For instance, this is one of the 33 butterflies in the collection
-                  </p>
+                <img
+                  src={"./democratization.png"}
+                  style={{
+                    height: "70%",
+                    width: "70%",
+                    maxHeight: 700,
+                    maxWidth: 700,
+                  }}
+                />
+                <p>
+                  For instance, this is one of the 33 butterflies in the
+                  collection
+                </p>
               </Box>
             </div>
           )}
+          <MintModal isOpen={mintOpen} onClose={onMintClose} />
           {visionRef && (
             <div ref={visionRef} style={{ paddingTop: 10 }}>
               <Box className={styles.card}>
