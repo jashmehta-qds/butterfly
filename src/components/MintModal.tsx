@@ -13,18 +13,6 @@ import { ABI } from "./abi";
 import Moralis from "moralis-v1";
 const CONTRACT_ADDRESS = "0x884B240451De381Cf15565A651D46283B6bDEb8F";
 
-const readTotalSupply = {
-  contractAddress: CONTRACT_ADDRESS,
-  functionName: "totalSupply",
-  abi: ABI,
-};
-
-const readIsMintingOn = {
-  contractAddress: CONTRACT_ADDRESS,
-  functionName: "isMintingOn",
-  abi: ABI,
-};
-
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -108,8 +96,6 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
     }, 2000);
     logout();
   }, []);
-
-  const onMint = () => {};
 
   useEffect(() => {
     if (totalCount > 2) {
