@@ -68,9 +68,9 @@ export default function DrawerAppBar(props: Props) {
                 props.onMenuClick(item, true);
                 props.onMintOpen();
               }}
-              sx={{ textAlign: "center" }}
+              sx={{ textAlign: "center", justifyContent:"center" }}
             >
-              <ListItemText primary={item} />
+              <p>{item}</p>
             </ListItemButton>
           </ListItem>
         ))}
@@ -95,6 +95,12 @@ export default function DrawerAppBar(props: Props) {
           <a target="_blank" href={"https://instagram.com/snoozedsneeze"}>
             <img
               src={"./instagramlogocolor.png"}
+              style={{ width: 25, height: 25 , marginRight: 10  }}
+            ></img>
+          </a>
+          <a target="_blank" href={"https://opensea.io/collection/butterfly-bubble"}>
+            <img
+              src={"./osblue.png"}
               style={{ width: 25, height: 25 }}
             ></img>
           </a>
@@ -149,9 +155,9 @@ export default function DrawerAppBar(props: Props) {
                   props.onMintOpen();
                 }}
                 key={item}
-                sx={{ color: "#fff" }}
+                sx={{ color: "#fff", alignContent:"center" }}
               >
-                {item}
+                  <p>{item}</p>
               </Button>
             ))}
             <a
@@ -167,9 +173,15 @@ export default function DrawerAppBar(props: Props) {
             <a target="_blank" href={"https://instagram.com/snoozedsneeze"}>
               <img
                 src={"./instagramlogo.png"}
-                style={{ width: 20, height: 20 }}
+                style={{ width: 20, height: 20, marginRight: 10 }}
               ></img>
             </a>
+            <a target="_blank" href={"https://opensea.io/collection/butterfly-bubble"}>
+            <img
+              src={"./os.png"}
+              style={{ width: 20, height: 20 }}
+            ></img>
+          </a>
           </Box>
         </Toolbar>
       </AppBar>
