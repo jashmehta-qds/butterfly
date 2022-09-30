@@ -13,7 +13,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import styles from "./styles.module.css";
+import MintModal from "./MintModal";
 export enum Tabs {
+  mint = "Mint",
   collection = "Collection",
   vision = "Vision",
   artist = "Artist",
@@ -26,15 +28,21 @@ interface Props {
    */
   window?: () => Window;
   onMenuClick(type: Tabs, isMobile?: boolean): void;
+  onMintOpen(): void;
 }
 
 const drawerWidth = "100%";
-const navItems: Tabs[] = [Tabs.collection, Tabs.vision, Tabs.artist, Tabs.journey];
+const navItems: Tabs[] = [
+  Tabs.mint,
+  Tabs.collection,
+  Tabs.vision,
+  Tabs.artist,
+  Tabs.journey,
+];
 
 export default function DrawerAppBar(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -56,8 +64,9 @@ export default function DrawerAppBar(props: Props) {
           <ListItem key={item} disablePadding>
             <ListItemButton
               onClick={() => {
-                console.log("clicked");
+                console.log("clicked", item);
                 props.onMenuClick(item, true);
+                props.onMintOpen();
               }}
               sx={{ textAlign: "center" }}
             >
@@ -135,8 +144,9 @@ export default function DrawerAppBar(props: Props) {
             {navItems.map((item) => (
               <Button
                 onClick={() => {
-                  console.log("clicked");
+                  console.log("clicked", item);
                   props.onMenuClick(item);
+                  props.onMintOpen();
                 }}
                 key={item}
                 sx={{ color: "#fff" }}
