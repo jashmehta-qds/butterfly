@@ -20,6 +20,7 @@ export enum Tabs {
   vision = "Vision",
   artist = "Artist",
   journey = "Journey",
+  claim = "Delegate Mint & Claim",
 }
 interface Props {
   /**
@@ -28,7 +29,7 @@ interface Props {
    */
   window?: () => Window;
   onMenuClick(type: Tabs, isMobile?: boolean): void;
-  onMintOpen(): void;
+  onMintOpen(type: string): void;
 }
 
 const drawerWidth = "100%";
@@ -38,6 +39,8 @@ const navItems: Tabs[] = [
   Tabs.vision,
   Tabs.artist,
   Tabs.journey,
+  Tabs.claim
+
 ];
 
 export default function DrawerAppBar(props: Props) {
@@ -66,7 +69,8 @@ export default function DrawerAppBar(props: Props) {
               onClick={() => {
                 console.log("clicked", item);
                 props.onMenuClick(item, true);
-                if(item === Tabs.mint)props.onMintOpen();
+                if(item === Tabs.mint){props.onMintOpen("X");}
+                if(item === Tabs.claim){props.onMintOpen("A");}
               }}
               sx={{ textAlign: "center", justifyContent:"center" }}
             >
@@ -152,7 +156,8 @@ export default function DrawerAppBar(props: Props) {
                 onClick={() => {
                   console.log("clicked", item);
                   props.onMenuClick(item);
-                  if(item === Tabs.mint)props.onMintOpen();
+                  if(item === Tabs.mint){props.onMintOpen("X");}
+                  if(item === Tabs.claim){props.onMintOpen("A");}
                 }}
                 key={item}
                 sx={{ color: "#fff", alignContent:"center" }}

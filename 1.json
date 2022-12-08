@@ -1,0 +1,11 @@
+{
+    "image": "ipfs://QmS1U8F2HtmPMq2xajgS6iQTVrK1NSvYoUNnhmfPMLbaxC",
+    "tokenId": 1,
+    "name": "Zebra Token Airdrop #1",
+    "attributes": [
+        {
+            "trait_type": "House",
+            "value": "Ether"
+        }
+    ]
+}

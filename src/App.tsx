@@ -7,6 +7,7 @@ import { CONTENT } from "./components/constants";
 import BubbleMap from "./components/BubbleMap";
 import DrawerAppBar, { Tabs } from "./components/TopBar";
 import MintModal from "./components/MintModal";
+import AirdropModal from "./components/AirdropModal";
 
 export default function App() {
   // const video = React.useRef<HTMLVideoElement>(null);
@@ -16,13 +17,20 @@ export default function App() {
   const artistRef = React.useRef<HTMLDivElement>(null);
   const journeyRef = React.useRef<HTMLDivElement>(null);
   const [mintOpen, setMintOpen] = React.useState(false);
+  const [airdropOpen, setAirdropOpen] = React.useState(false);
+  const [zmintOpen, setZmintOpen] = React.useState(false);
 
-  const onMintClose = () => {
-    setMintOpen(false);
+  const onMintClose = (type?:string) => {
+    if (type === "A") setAirdropOpen(false);
+    else if (type === "M") setZmintOpen(false);
+    else setMintOpen(false);
   };
 
-  const onMintOpen = () => {
-    setMintOpen(true);
+  const onMintOpen = (type: string) => {
+    console.log("t",type);
+    if (type === "A") setAirdropOpen(true);
+    else if (type === "M") setZmintOpen(true);
+    else setMintOpen(true);
   };
   React.useEffect(() => {
     setTimeout(() => {
@@ -52,6 +60,10 @@ export default function App() {
           isMobile ? true : { behavior: "smooth" }
         );
         break;
+        default :
+        collectionRef.current?.scrollIntoView(
+          isMobile ? true : { behavior: "smooth" }
+        );
     }
   };
   return (
@@ -101,15 +113,18 @@ export default function App() {
                     maxWidth: 700,
                   }}
                 />
-                <p style={{paddingBottom: 20}}>
+                <p style={{ paddingBottom: 20 }}>
                   For instance, this is one of the 33 butterflies in the
                   collection
-                  
                 </p>
               </Box>
             </div>
           )}
-          <MintModal isOpen={mintOpen} onClose={onMintClose} />
+          <MintModal isOpen={mintOpen} onClose={() => onMintClose("x")} />
+          <AirdropModal
+            isOpen={airdropOpen}
+            onClose={onMintClose}
+          />
           {visionRef && (
             <div ref={visionRef} style={{ paddingTop: 10 }}>
               <Box className={styles.card}>
