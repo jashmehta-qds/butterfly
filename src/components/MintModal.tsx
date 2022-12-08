@@ -12,7 +12,8 @@ import {
   useAddress,
   useDisconnect,
   useMetamask,
-  useSDK,
+  useNetworkMismatch,
+  useSDK
 } from "@thirdweb-dev/react";
 import { useWalletConnect } from "@thirdweb-dev/react";
 import { SmartContract } from "@thirdweb-dev/sdk";
@@ -73,7 +74,8 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
     React.useState("????");
   console.log("add", address);
   const [contract, setContract] = React.useState<SmartContract<BaseContract>>();
-  const [error, setError] = React.useState<string>("");
+  const [error, setError] = React.useState<string>();
+  const isMismatched = useNetworkMismatch();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,6 +84,10 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
     fetchData();
     console.log("cont:", contract);
   }, [sdk]);
+
+  useEffect(() => {
+    if (isMismatched) setError("Change your Network to Ethereum Mainnet");
+  }, [error, isMismatched]);
 
   useEffect(() => {
     const supply = async () => {
@@ -97,7 +103,7 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
       ?.call("mint", totalCount, {
         value: ethers.utils.parseEther((0.25 * totalCount).toString()), // send 0.1 ether with the contract call
       })
-      .catch((res: any) => alert(res));
+      .catch((res: any) => setError(res.toString()));
   };
 
   const [buttonStyles, setButtonStyles] = React.useState<{
@@ -130,6 +136,12 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
     if (totalCount > 1) setTotalCount((res) => (res -= 1));
   };
 
+  const errorReason = () => {
+    if (error?.includes("Internal JSON-RPC")) return "Change your Network";
+    if (error?.includes("insufficient funds")) return "Insufficient Balance";
+    else return error;
+  };
+
   return (
     <>
       <Modal
@@ -140,7 +152,7 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
       >
         {
           <Box sx={style}>
-            {!address && (
+            {!address && !error && (
               <div
                 style={{
                   display: "flex",
@@ -163,7 +175,7 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
                 </ListItemAvatar>
               </div>
             )}
-            {address && (
+            {address && !error && (
               <>
                 <h2>Butterfly Bubble</h2>
                 <p> {totalAvailableSupply} / 33 Minted</p>
@@ -212,6 +224,20 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
                     <p style={{ padding: 0, margin: 0 }}>Disconnect</p>
                   </Button>
                 </p>
+              </>
+            )}
+            {address && error && (
+              <>
+                <h2>Transaction Error</h2>
+                <p>{errorReason()}</p>
+                <Button
+                  variant="contained"
+                  style={mintBtn}
+                  disabled={false}
+                  onClick={() => setError(undefined)}
+                >
+                  Dismiss
+                </Button>
               </>
             )}
           </Box>
