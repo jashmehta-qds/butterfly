@@ -1,17 +1,22 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useEffect } from "react";
-import styles from "./styles.module.css";
-import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import { ListItemAvatar, Avatar } from "@mui/material";
 import { ABI } from "./abi";
-import Moralis from "moralis-v1";
 const CONTRACT_ADDRESS = "0x884B240451De381Cf15565A651D46283B6bDEb8F";
+import {
+  useAddress,
+  useDisconnect,
+  useMetamask,
+  useSDK,
+} from "@thirdweb-dev/react";
+import { useWalletConnect } from "@thirdweb-dev/react";
+import { SmartContract } from "@thirdweb-dev/sdk";
+import { BaseContract, ethers } from "ethers";
 
 const style = {
   position: "absolute" as "absolute",
@@ -19,7 +24,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  maxWidth:"80%",
+  maxWidth: "80%",
   bgcolor: "background.paper",
   border: "2px solid #fff",
   borderRadius: 6,
@@ -59,37 +64,51 @@ interface MintModalProps {
 }
 
 const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
-  const { authenticate, isAuthenticated, user, logout } = useMoralis();
+  const connectWithMetamask = useMetamask();
+  const connectWithWalletConnect = useWalletConnect();
+  const disconnect = useDisconnect();
+  const address = useAddress();
+  const sdk = useSDK();
+  const [totalAvailableSupply, setTotalAvailableSupply] =
+    React.useState("????");
+  console.log("add", address);
+  const [contract, setContract] = React.useState<SmartContract<BaseContract>>();
+  const [error, setError] = React.useState<string>("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      return setContract(await sdk?.getContract(CONTRACT_ADDRESS, ABI));
+    };
+    fetchData();
+    console.log("cont:", contract);
+  }, [sdk]);
+
+  useEffect(() => {
+    const supply = async () => {
+      setTotalAvailableSupply(
+        ((await contract?.call("totalSupply")) as Number).toString()
+      );
+    };
+    supply();
+  }, [contract]);
+
+  const mintContract = async () => {
+    const mintFn = await contract
+      ?.call("mint", totalCount, {
+        value: ethers.utils.parseEther((0.25 * totalCount).toString()), // send 0.1 ether with the contract call
+      })
+      .catch((res: any) => alert(res));
+  };
+
   const [buttonStyles, setButtonStyles] = React.useState<{
     plusBtnColor: string;
     minusBtnColor: string;
   }>({ plusBtnColor: "black", minusBtnColor: "lightgray" });
   const [totalCount, setTotalCount] = React.useState(1);
-  const [totalAvailableSupply, setTotalAvailableSupply] =
-    React.useState("????");
+
   const incrementCount = () => {
     if (totalCount < 3) setTotalCount((res) => (res += 1));
   };
-  const { data, error, fetch, isFetching, isLoading } = useWeb3ExecuteFunction({
-    abi: ABI,
-    contractAddress: CONTRACT_ADDRESS,
-    functionName: "mint",
-    params: {
-      quantity: totalCount,
-    },
-    msgValue: Moralis.Units.ETH(`${totalCount * 0.25}`.slice(0, 7)),
-  });
-
-  const supply = useWeb3ExecuteFunction({
-    abi: ABI,
-    contractAddress: CONTRACT_ADDRESS,
-    functionName: "totalSupply",
-  });
-
-  useEffect(() => {
-    if (isAuthenticated) supply.fetch();
-  }, [isAuthenticated]);
-
 
   useEffect(() => {
     if (totalCount > 2) {
@@ -121,7 +140,7 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
       >
         {
           <Box sx={style}>
-            {!isAuthenticated && (
+            {!address && (
               <div
                 style={{
                   display: "flex",
@@ -132,31 +151,22 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
               >
                 <ListItemAvatar>
                   <Avatar
-                    onClick={() =>
-                      authenticate({
-                        signingMessage: "Welcome to Butterfly Bubble by SnoozedSneeze",
-                      })
-                    }
+                    onClick={connectWithMetamask}
                     src={"./metamask.png"}
                   ></Avatar>
                 </ListItemAvatar>
                 <ListItemAvatar>
                   <Avatar
-                    onClick={() => {
-                      authenticate({
-                        provider: "wc",
-                        signingMessage: "Welcome to Butterfly Bubble by SnoozedSneeze",
-                      });
-                    }}
+                    onClick={connectWithWalletConnect}
                     src={"./walletconnect.jpeg"}
                   ></Avatar>
                 </ListItemAvatar>
               </div>
             )}
-            {isAuthenticated && (
+            {address && (
               <>
                 <h2>Butterfly Bubble</h2>
-                <p> {Number(supply.data)} / 33 Minted</p>
+                <p> {totalAvailableSupply} / 33 Minted</p>
                 <img
                   style={{ marginTop: "1rem", height: 100, width: 100 }}
                   src={"/logo720.png"}
@@ -188,8 +198,8 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
                 <Button
                   variant="contained"
                   style={mintBtn}
-                  disabled={isFetching}
-                  onClick={() => fetch()}
+                  disabled={false}
+                  onClick={() => mintContract()}
                 >
                   <p style={{ padding: 0, margin: 0 }}>Mint</p>
                 </Button>
@@ -197,12 +207,11 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
                   <Button
                     variant="contained"
                     style={disconnectBtn}
-                    onClick={() => logout()}
+                    onClick={disconnect}
                   >
                     <p style={{ padding: 0, margin: 0 }}>Disconnect</p>
                   </Button>
                 </p>
-                {error && !error.message.includes("MetaMask Tx Signature: User denied transaction signature.") && alert(error.message)}
               </>
             )}
           </Box>
