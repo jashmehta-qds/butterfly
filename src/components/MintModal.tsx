@@ -72,7 +72,6 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
   const sdk = useSDK();
   const [totalAvailableSupply, setTotalAvailableSupply] =
     React.useState("????");
-  console.log("add", address);
   const [contract, setContract] = React.useState<SmartContract<BaseContract>>();
   const [error, setError] = React.useState<string>();
   const isMismatched = useNetworkMismatch();
@@ -82,7 +81,6 @@ const MintModal: React.FC<MintModalProps> = ({ onClose, isOpen }) => {
       return setContract(await sdk?.getContract(CONTRACT_ADDRESS, ABI));
     };
     fetchData();
-    console.log("cont:", contract);
   }, [sdk]);
 
   useEffect(() => {
