@@ -6,30 +6,14 @@ export const CONTENT = {
     BODY: (
       <>
         <p>
-          , an <b>art</b> collection by the artist <b>Snoozed Sneeze</b>{" "}
-          comprises <b>33 butterflies </b> within their respective bubbles,
-          oblivious to their surroundings, each in a This genesis collection is
-          tokenized completely on-chain and the artist invites you to take a
-          leap of faith into the Butterfly Bubble ecosystem on the Ethereum
-          blockchain (PoS).
+          Butterfly Bubble, an <b>art</b> collection by the artist{" "}
+          <b>Snoozed Sneeze</b> comprises <b>33 butterflies </b> within their
+          respective bubbles, oblivious to their surroundings, each in a This
+          genesis collection is tokenized completely on-chain and the artist
+          invites you to take a leap of faith into the Butterfly Bubble
+          ecosystem on the Ethereum blockchain (PoS).
         </p>
         <p>
-          Each butterfly enables its collector to receive{" "}
-          <b>future airdrops </b>
-          which will be minted and stored under a separate collection on Inter
-          Planetary File System <b>(IPFS)</b>. There will be a total of{" "}
-          <b>13 airdrops</b> for each genesis butterfly over <b>8 years</b>.
-          This would make them a <b>total of 14 butterflies per set </b>, each
-          butterfly representing a day in the average
-          <b> lifespan of a butterfly.</b>
-          <b>Butterfly Bubble</b>, an art collection by artist{" "}
-          <b>Snoozed Sneeze</b> comprises
-          <b>33</b> butterflies, each created on a <b>24 x 24</b> pixel grid.
-          The artist invites you into the Butterfly Bubble ecosystem through the{" "}
-          <b>Genesis</b>
-          collection, tokenized fully on the <b>
-            Ethereum blockchain (PoS).
-          </b>{" "}
           Each butterfly will evolve through{" "}
           <b>13 intermittent airdrops every 8 months</b>
           and <b>only</b> those collectors who <b>own the genesis butterfly</b>{" "}
@@ -40,9 +24,9 @@ export const CONTENT = {
           representing <b>a day in the average lifespan of a butterfly.</b>
         </p>
         <p>
-          With each airdrop, the <b>pixel grid </b> that the butterfly and
-          bubble are created on shall <b>grows larger</b>, creating{" "}
-          <b>a more vivid visual</b>,allegorizing the{" "}
+          With each airdrop, the <b>pixel grid</b> that the butterfly and bubble
+          are created on shall <b>grows larger</b>, creating{" "}
+          <b>a more vivid visual</b>, allegorizing the{" "}
           <b>maturation of a butterfly.</b>
         </p>
       </>
@@ -84,13 +68,19 @@ export const CONTENT = {
           yard.
         </p>
         <p>
-          His visual vocabulary reflects various <b>gradients and textures from the
-          vastness of seas, fields and valleys stippled with intricate forms of
-          flowers, butterflies, birds and people. ‘Metamorphosis’</b>  and the
-          <b>complete disintegration</b> that a butterfly goes through to merely exist
-          for a short span of time nurtured SNZ’s curiosity as a child. He
-          believes it offered him flexibility growing up in <b>disintegrating and
-          reintegrating his conviction from time to time.</b>
+          His visual vocabulary reflects various{" "}
+          <b>
+            gradients and textures from the vastness of seas, fields and valleys
+            stippled with intricate forms of flowers, butterflies, birds and
+            people. ‘Metamorphosis’
+          </b>{" "}
+          and the
+          <b>complete disintegration</b> that a butterfly goes through to merely
+          exist for a short span of time nurtured SNZ’s curiosity as a child. He
+          believes it offered him flexibility growing up in{" "}
+          <b>
+            disintegrating and reintegrating his conviction from time to time.
+          </b>
         </p>
         {/* <p>
           Painting these walls as <b>massive canvasses</b> was fundamental to
@@ -135,7 +125,7 @@ export const CONTENT = {
           <b>acknowledging our dissonance </b> as we spin up our webs of
           perception and find ourselves trapped in them (<b>‘RISKY BIZKITS’</b>{" "}
           - September 2020, <b>‘MiNES FOR MiNDS’</b> - December 2021).
-        </p> 
+        </p>
       </>
     ),
     FOOTER: [
