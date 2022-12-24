@@ -6,7 +6,7 @@ export const CONTENT = {
     BODY: (
       <>
         <p>
-          Butterfly Bubble, an <b>art</b> collection by the artist{" "}
+          <b>Butterfly Bubble</b>, an <b>art</b> collection by the artist{" "}
           <b>Snoozed Sneeze</b> comprises <b>33 butterflies </b> within their
           respective bubbles, oblivious to their surroundings, each in a This
           genesis collection is tokenized completely on-chain and the artist
@@ -15,7 +15,7 @@ export const CONTENT = {
         </p>
         <p>
           Each butterfly will evolve through{" "}
-          <b>13 intermittent airdrops every 8 months</b>
+          <b>13 intermittent airdrops every 8 months</b>{" "}
           and <b>only</b> those collectors who <b>own the genesis butterfly</b>{" "}
           will be eligible to continue receiving them. <b>Minted and stored</b>{" "}
           under a separate collection called <b>Butterfly Bubble: Phases</b> on
@@ -25,7 +25,7 @@ export const CONTENT = {
         </p>
         <p>
           With each airdrop, the <b>pixel grid</b> that the butterfly and bubble
-          are created on shall <b>grows larger</b>, creating{" "}
+          are created on shall <b>grow larger</b>, creating{" "}
           <b>a more vivid visual</b>, allegorizing the{" "}
           <b>maturation of a butterfly.</b>
         </p>
