@@ -1,10 +1,9 @@
-
-
 const { createSecureHeaders } = require("next-secure-headers");
 
 module.exports = {
-    async headers() {
-      return [{
+  async headers() {
+    return [
+      {
         source: "/(.*)",
         headers: createSecureHeaders({
           contentSecurityPolicy: {
@@ -13,9 +12,13 @@ module.exports = {
               styleSrc: ["'self'"],
             },
           },
-          forceHTTPSRedirect: [true, { maxAge: 60 * 60 * 24 * 4, includeSubDomains: true }],
+          forceHTTPSRedirect: [
+            true,
+            { maxAge: 60 * 60 * 24 * 4 * 6, includeSubDomains: true },
+          ],
           referrerPolicy: "same-origin",
-        })
-      }];
-    },
-  };
+        }),
+      },
+    ];
+  },
+};
