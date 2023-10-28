@@ -25,6 +25,7 @@
     "react": "^18.2.0",
     "react-app-rewired": "^2.2.1",
     "react-dom": "^18.2.0",
+    "react-player": "^2.13.0",
     "react-scripts": "latest",
     "serve": "^14.0.1",
     "stream-browserify": "^3.0.0",
@@ -53,5 +54,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
