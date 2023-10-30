@@ -61,7 +61,7 @@ export default function App() {
     }
   };
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", background: "black" }}>
       <DrawerAppBar onMenuClick={scrollTo} onMintOpen={onMintOpen} />
       <Box
         component="main"
@@ -69,24 +69,10 @@ export default function App() {
         className={styles.videoWrapper}
       >
         <Toolbar />
-        {
-          // <video
-          //   loop
-          //   autoPlay
-          //   muted
-          //   playsInline={true}
-          //   controls={false}
-          //   style={{
-          //     width: "100%",
-          //     height: "100%",
-          //     objectFit: "cover",
-          //     position: "fixed",
-          //   }}
-          // >
-          //   <source src="/welcome.mp4" type="video/mp4" />
-          // </video>
-        }
-        <Box style={{ color: "white", position: "sticky" }}>
+
+        <Box
+          style={{ color: "white", position: "sticky", background: "black" }}
+        >
           <Toolbar />
 
           {collectionRef && (
@@ -98,15 +84,9 @@ export default function App() {
                 </div>
               </Box>
               <Box className={styles.cardOpaque}>
-                <img
-                  src={"./democratization.png"}
-                  style={{
-                    height: "70%",
-                    width: "70%",
-                    maxHeight: 700,
-                    maxWidth: 700,
-                  }}
-                />
+                <video loop autoPlay muted controls={false} height={500}>
+                  <source src="/welcome.mp4" type="video/mp4" />
+                </video>
                 <p style={{ paddingBottom: 20 }}>
                   For instance, this is one of the 33 butterflies in the
                   collection
@@ -126,7 +106,7 @@ export default function App() {
             </div>
           )}
           {visionRef && (
-            <div ref={visionRef} style={{ paddingTop: 10 }}>
+            <div ref={visionRef} style={{ paddingTop: 10 }} className="bg-dark">
               <Box className={styles.card}>
                 <div style={{ textAlign: "justify" }}>
                   <p className={styles.cardTitle}>{CONTENT.VISION.HEADER}</p>

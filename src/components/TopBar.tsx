@@ -53,7 +53,7 @@ export default function DrawerAppBar(props: Props) {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <img
         style={{ marginTop: "1rem", height: 50, width: 50 }}
-        src={"/logo720.png"}
+        src={"/logo-latest.png"}
         alt={"1"}
         loading="lazy"
       />
@@ -135,13 +135,13 @@ export default function DrawerAppBar(props: Props) {
           >
             <img
               style={{
-                marginTop: "2rem",
+                marginTop: ".75rem",
                 height: 75,
                 width: 75,
                 marginLeft: "calc(50% - 62px)",
                 position: "absolute",
               }}
-              src={"/logo720.png"}
+              src={"/logo-latest.png"}
               alt={"1"}
               loading="lazy"
             />
