@@ -7,6 +7,7 @@ import { CONTENT } from "./components/constants";
 import BubbleMap from "./components/BubbleMap";
 import DrawerAppBar, { Tabs } from "./components/TopBar";
 import MintGallery from "./components/MintGallery";
+import ReactPlayer from "react-player/youtube";
 
 export default function App() {
   // const video = React.useRef<HTMLVideoElement>(null);
@@ -83,14 +84,11 @@ export default function App() {
                   {CONTENT.COLLECTION.BODY}
                 </div>
               </Box>
-              <Box className={styles.cardOpaque}>
-                <video loop autoPlay muted controls={false} height={500}>
-                  <source src="/welcome.mp4" type="video/mp4" />
-                </video>
-                <p style={{ paddingBottom: 20 }}>
-                  For instance, this is one of the 33 butterflies in the
-                  collection
-                </p>
+              <Box className={styles.cardVideo}>
+              <ReactPlayer
+                    url={"https://youtu.be/q_Rn-sUn2w4"}
+   
+                  />
               </Box>
             </div>
           )}

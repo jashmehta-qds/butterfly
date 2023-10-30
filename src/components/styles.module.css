@@ -40,6 +40,17 @@ h2 {
   margin-top: -10%;
 }
 
+.cardVideo {
+  padding-top: 0px;
+  /* margin-bottom: 20%; */
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  text-align: center;
+  margin-top: -15%;
+  margin-bottom: 10%;
+  text-align: -webkit-center;
+}
+
 .cardSpacer {
   /* background-color: rgba(0,0,0,0.6); */
   border-radius: 8px;
