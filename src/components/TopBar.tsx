@@ -34,7 +34,7 @@ interface Props {
 
 const drawerWidth = "100%";
 const navItems: Tabs[] = [
-  Tabs.mint,
+  // Tabs.mint,
   Tabs.collection,
   Tabs.process,
   Tabs.vision,
@@ -58,7 +58,7 @@ export default function DrawerAppBar(props: Props) {
         loading="lazy"
       />
       <Typography variant="h6">
-        <p className={styles.logofont}>Butterfly Bubble</p>
+        <p className={styles.logofont}>Process Feed</p>
       </Typography>
       <Divider />
       <List>
@@ -145,7 +145,7 @@ export default function DrawerAppBar(props: Props) {
               alt={"1"}
               loading="lazy"
             />
-            <p className={styles.logofont}>Butterfly Bubble</p>
+            <p className={styles.logofont}>Process Feed</p>
           </Typography>
           <div></div>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>

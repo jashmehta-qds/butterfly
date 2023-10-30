@@ -205,14 +205,15 @@ const MintGallery = ({ isOpen, onClose }: MintGalleryProps) => {
                 </div>
               </Grid>
               <Grid item xs={12} md={4} sx={{ textAlign: "center" }}>
-                <h2>Butterfly Bubble</h2>
+                <h2>Process Feed</h2>
                 <img
                   style={{ marginTop: "1rem", height: 100, width: 100 }}
-                  src={"/logo720.png"}
+                  src={"/logo-latest.png"}
                   alt={"1"}
                   loading="lazy"
                 />
-                <p>Total Cost : 500 Ξ</p>
+                <p>Cost : 0.33 Ξ</p>
+                <p>Selected Gem : Anxiety</p>
                 <Button
                   sx={{
                     bgcolor: "#18181b",

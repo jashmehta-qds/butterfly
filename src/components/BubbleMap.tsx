@@ -132,25 +132,25 @@ const TIMELINEITEMS = [
   //new
 
   {
-    description: { title: "Mined", subTitle: "25·Dec·30" },
+    description: { title: "Mined", subTitle: "" },
     info: "25 December",
-    connector: "108 x 108",
+    connector: "25·Dec·23",
     color: "rgba(0,255,255,0.2)",
     status: "",
     icon: undefined,
   },
   {
-    description: { title: "Chamfered", subTitle: "25·Dec·30" },
+    description: { title: "Chamfered", subTitle: "" },
     info: "25 December",
-    connector: "108 x 108",
+    connector: "25·Dec·30",
     color: "rgba(0,255,255,0.2)",
     status: "",
     icon: undefined,
   },
   {
-    description: { title: "Cut", subTitle: "25·Dec·30" },
+    description: { title: "Cut", subTitle: "" },
     info: "25 December",
-    connector: "108 x 108",
+    connector: "25·Dec·30",
     color: "rgba(0,255,255,0.2)",
     status: "",
     icon: undefined,

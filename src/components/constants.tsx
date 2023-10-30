@@ -63,10 +63,10 @@ export const CONTENT = {
         local police headquarters, as well as co-creating what was considered
         the third longest street art in India at the time in 2017 (300ft x 15ft)
         for Reliance at the Mumbai Metro rail yard. SNZ's most recent NFT
-        release has been his series named <b>Butterfly Bubble</b> (2022).
-        Inspired by <b>temporal themes</b>, SNZ’s earlier work tokenized as
-        NFTs, speaks to the inevitability of time (<b>‘Patients of Time’</b> -
-        April 2021), identifying ourselves (<b>‘OG SUGGA’</b> September 2020,
+        release has been his series named <b>Butterfly Bubble</b> (2022). Inspired
+        by <b>temporal themes</b>, SNZ’s earlier work tokenized as NFTs, speaks
+        to the inevitability of time (<b>‘Patients of Time’</b> - April 2021),
+        identifying ourselves (<b>‘OG SUGGA’</b> September 2020,
         <b>‘Epigenetics’</b> - April 2021) and acknowledging our dissonance as
         we spin up our webs of perception and find ourselves trapped within them
         (<b>‘RISKY BIZKITS’</b> - September 2020, <b>‘MiNES FOR MiNDS’</b> -
@@ -90,8 +90,7 @@ export const CONTENT = {
         ongoing debate over the <b>implications of the use of AI in art</b>: its
         role as a <b>tool and/or collaborator</b> offers an unstable stool to
         place our bets upon and SNZ is betting on both sides by making this
-        statement.
-        <b>Deliberation defies all doubts.</b>
+        statement. <b>Deliberation defies all doubts.</b>
       </>
     ),
     FOOTER: [],
