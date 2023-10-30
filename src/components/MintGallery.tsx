@@ -205,7 +205,7 @@ const MintGallery = ({ isOpen, onClose }: MintGalleryProps) => {
                 </div>
               </Grid>
               <Grid item xs={12} md={4} sx={{ textAlign: "center" }}>
-                <h2>Process Feed</h2>
+                <h2>Processed Feed</h2>
                 <img
                   style={{ marginTop: "1rem", height: 100, width: 100 }}
                   src={"/logo-latest.png"}
