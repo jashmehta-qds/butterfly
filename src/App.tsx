@@ -85,10 +85,10 @@ export default function App() {
                 </div>
               </Box>
               <Box className={styles.cardVideo}>
-              <ReactPlayer
-                    url={"https://youtu.be/q_Rn-sUn2w4"}
-   
-                  />
+                <ReactPlayer
+                  url={"https://youtu.be/q_Rn-sUn2w4"}
+                  width={"100%"}
+                />
               </Box>
             </div>
           )}
