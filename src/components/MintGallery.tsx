@@ -26,7 +26,7 @@ import {
 import { SmartContract } from "@thirdweb-dev/sdk";
 import { BaseContract, ethers } from "ethers";
 import { ABI } from "./abi";
-const CONTRACT_ADDRESS = "0x9C4E97c40cA4d1663e3108370d9EaA55e784ee4A";
+const CONTRACT_ADDRESS = "0xce224aae878ec6a8e4d6c3b2c9076a9edbe148de";
 interface MintGalleryProps {
   isOpen: boolean;
   onClose(): void;
