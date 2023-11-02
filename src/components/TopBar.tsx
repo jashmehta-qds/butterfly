@@ -34,7 +34,7 @@ interface Props {
 
 const drawerWidth = "100%";
 const navItems: Tabs[] = [
-  // Tabs.mint,
+  Tabs.mint,
   Tabs.collection,
   Tabs.process,
   Tabs.vision,
