@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { isMobile } from "react-device-detect";
 
 import { styled } from "@mui/material/styles";
@@ -26,7 +26,7 @@ import {
 import { SmartContract } from "@thirdweb-dev/sdk";
 import { BaseContract, ethers } from "ethers";
 import { ABI } from "./abi";
-const CONTRACT_ADDRESS = "0x136A8d4E851bebD0baa5bC2cF7E75B3Dd6f0E2f2";
+const CONTRACT_ADDRESS = "0xce224aae878ec6a8e4d6c3b2c9076a9edbe148de";
 interface MintGalleryProps {
   isOpen: boolean;
   onClose(): void;
@@ -54,6 +54,8 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     margin: 0,
   },
 }));
+
+
 
 interface ItemData {
   id: number;
@@ -96,7 +98,7 @@ const itemData: ItemData[] = [
     img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
     title: "Pride",
     videoLink: "https://youtu.be/15W7EIasoCk?si=AW3qLNV0H1OfQLbT",
-    presoldWalletAddress: "0x911Bb65A13AF3f83cd0b60bf113B644b53D7E438",
+    presoldWalletAddress: "0x1958E5D7477ed777390e7034A9CC9719632838C3",
   },
   {
     id: 6,
@@ -180,6 +182,7 @@ const MintGallery = ({ isOpen, onClose }: MintGalleryProps) => {
   const [error, setError] = React.useState<string>();
   const isMismatched = useNetworkMismatch();
   const [isSelectedTokenMinted, setIsSelectedTokenMinted] = useState(false);
+  const [isMinted, setIsMinted] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
     null
@@ -214,19 +217,43 @@ const MintGallery = ({ isOpen, onClose }: MintGalleryProps) => {
 
   const mintContract = async () => {
     const mintFn = await contract
-      ?.call("mint", {
-        value: ethers.utils.parseEther((0.36).toString()), // send 0.1 ether with the contract call
+      ?.call("mint", selectedImageIndex ? selectedImageIndex + 1 : null, {
+        value: ethers.utils.parseEther((0.00036).toString()), // send 0.1 ether with the contract call
+      })
+      .then(() => {
+        setIsMinted(true);
       })
       .catch((res: any) => setError(res.toString()));
   };
 
   const claimContract = async () => {
     const mintFn = await contract
-      ?.call("claim", {
-        value: ethers.utils.parseEther((0.36).toString()), // send 0.1 ether with the contract call
+      ?.call("claim", selectedImageIndex ? selectedImageIndex + 1 : null, {
+        value: ethers.utils.parseEther((0.000036).toString()), // send 0.1 ether with the contract call
       })
       .catch((res: any) => setError(res.toString()));
   };
+
+  useEffect(() => {
+    const _ownerOf = async () => {
+      const _sel = (selectedImageIndex ?? 0) + 1;
+
+      console.log("comeon", _sel, ethers.utils.parseUnits((1).toString()));
+      const x = await contract?.call
+        ("ownerOf", _sel)
+        .then((res: any) => {
+          console.log("response", res)
+          setIsMinted(true);
+          setError("already minted");
+        })
+        .catch(() => {})
+    };
+
+    console.log(selectedImageIndex);
+    if (selectedImageIndex !== null) {
+      _ownerOf();
+    }
+  }, [selectedImageIndex]);
 
   const errorReason = () => {
     if (error?.includes("Internal JSON-RPC")) return "Change your Network";
@@ -234,19 +261,31 @@ const MintGallery = ({ isOpen, onClose }: MintGalleryProps) => {
     else return error;
   };
 
-  useEffect(() => {
-    const supply = async () => {
-      if (selectedImageIndex) {
-        setIsSelectedTokenMinted(
-          !!(await contract?.call("ownerOf"), itemData[selectedImageIndex + 1])
-        );
-      } else {
-        setIsSelectedTokenMinted(false);
-      }
-    };
-    supply();
-  }, [contract, selectedImageIndex]);
+  // const isMintableDisabled = () => {
+  //   if (
+  //     selectedImageIndex &&
+  //     itemData[selectedImageIndex]?.presoldWalletAddress !== undefined &&
+  //     itemData[selectedImageIndex]?.presoldWalletAddress?.toLowerCase() !==
+  //       address?.toLowerCase()
+  //   )
+  //     return true;
+  //   else if (isMinted) return true;
+  //   else return false;
+  // };
 
+
+  const isMintableDisabled = useMemo(() =>
+   {
+    console.log(isMinted)
+    if (
+        selectedImageIndex &&
+        itemData[selectedImageIndex]?.presoldWalletAddress !== undefined &&
+        itemData[selectedImageIndex]?.presoldWalletAddress?.toLowerCase() !==
+          address?.toLowerCase()
+      )
+        return true;
+      else if (isMinted) return true;
+      else return false;}, [isMinted, selectedImageIndex])
   useEffect(() => {
     if (isMismatched) setError("Change your Network to Ethereum Mainnet");
     else setOpenSnack(true);
@@ -292,10 +331,10 @@ const MintGallery = ({ isOpen, onClose }: MintGalleryProps) => {
 
   return (
     <div>
-      
       <BootstrapDialog
         onClose={() => {
           setSelectedImageIndex(null);
+          setIsMinted(false)
           onClose();
         }}
         aria-labelledby="mint-gallery-title"
@@ -363,27 +402,41 @@ const MintGallery = ({ isOpen, onClose }: MintGalleryProps) => {
                     </AvatarGroup>
                   </>
                 ) : (
-                  <Button
-                    sx={{
-                      bgcolor: "#18181b",
-                      ":hover": { bgcolor: "#20201d" },
+                  <div
+                    style={{
+                      gap: 24,
+                      display: "flex",
+                      justifyContent: "center",
                     }}
-                    disabled={
-                      itemData[selectedImageIndex]?.presoldWalletAddress !==
-                        undefined &&
-                      itemData[
-                        selectedImageIndex
-                      ]?.presoldWalletAddress?.toLowerCase() !==
-                        address?.toLowerCase()
-                    }
-                    onClick={() =>
-                      itemData[selectedImageIndex]?.presoldWalletAddress
-                        ? claimContract()
-                        : mintContract()
-                    }
                   >
-                    Mint
-                  </Button>
+                    <Button
+                      sx={{
+                        bgcolor: "#18181b",
+                        ":hover": { bgcolor: "#20201d" },
+                      }}
+                      onClick={() => {
+                        setSelectedImageIndex(null);
+                        setIsMinted(false)
+                        setError(undefined);
+                      }}
+                    >
+                      Go Back
+                    </Button>
+                    <Button
+                      sx={{
+                        bgcolor: "#18181b",
+                        ":hover": { bgcolor: "#20201d" },
+                      }}
+                      disabled={isMintableDisabled}
+                      onClick={() =>
+                        itemData[selectedImageIndex]?.presoldWalletAddress
+                          ? claimContract()
+                          : mintContract()
+                      }
+                    >
+                      Mint
+                    </Button>
+                  </div>
                 )}
               </Grid>
             </Grid>
@@ -391,13 +444,13 @@ const MintGallery = ({ isOpen, onClose }: MintGalleryProps) => {
             <ImageList cols={isMobile ? 2 : 4} gap={8}>
               {itemData.map((item, idx) => (
                 <ImageListItem
-                  key={item.img}
+                  key={item.id}
                   onMouseOver={() => showButton(idx)}
                   onMouseOut={hideButton}
                 >
                   <img
                     srcSet={`./${item.id}.jpg?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                    src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                    src={`./${item.id}.jpg?w=164&h=164&fit=crop&auto=format`}
                     alt={item.title}
                     loading="lazy"
                     style={{
@@ -432,7 +485,6 @@ const MintGallery = ({ isOpen, onClose }: MintGalleryProps) => {
             </>
           }
         ></Snackbar>
-      
       </BootstrapDialog>
     </div>
   );
