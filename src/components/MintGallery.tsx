@@ -98,7 +98,7 @@ const itemData: ItemData[] = [
     img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
     title: "Pride",
     videoLink: "https://youtu.be/15W7EIasoCk?si=AW3qLNV0H1OfQLbT",
-    presoldWalletAddress: "0x1958E5D7477ed777390e7034A9CC9719632838C3",
+    presoldWalletAddress: "0x911Bb65A13AF3f83cd0b60bf113B644b53D7E438",
   },
   {
     id: 6,
