@@ -229,7 +229,7 @@ const MintGallery = ({ isOpen, onClose }: MintGalleryProps) => {
   const claimContract = async () => {
     const mintFn = await contract
       ?.call("claim", selectedImageIndex ? selectedImageIndex + 1 : null, {
-        value: ethers.utils.parseEther((0.000036).toString()), // send 0.1 ether with the contract call
+        value: ethers.utils.parseEther((0.36).toString()), // send 0.1 ether with the contract call
       })
       .catch((res: any) => setError(res.toString()));
   };
