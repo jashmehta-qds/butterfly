@@ -218,7 +218,7 @@ const MintGallery = ({ isOpen, onClose }: MintGalleryProps) => {
   const mintContract = async () => {
     const mintFn = await contract
       ?.call("mint", selectedImageIndex ? selectedImageIndex + 1 : null, {
-        value: ethers.utils.parseEther((0.00036).toString()), // send 0.1 ether with the contract call
+        value: ethers.utils.parseEther((0.36).toString()), // send 0.1 ether with the contract call
       })
       .then(() => {
         setIsMinted(true);
