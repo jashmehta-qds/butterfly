@@ -102,7 +102,7 @@ export default function DrawerAppBar(props: Props) {
           </a>
           <a
             target="_blank"
-            href={"https://opensea.io/collection/butterfly-bubble"}
+            href={"https://opensea.io/collection/processedfeed"}
           >
             <img src={"./osblue.png"} style={{ width: 25, height: 25 }}></img>
           </a>
@@ -180,7 +180,7 @@ export default function DrawerAppBar(props: Props) {
             </a>
             <a
               target="_blank"
-              href={"https://opensea.io/collection/butterfly-bubble"}
+              href={"https://opensea.io/collection/processedfeed"}
             >
               <img src={"./os.png"} style={{ width: 20, height: 20 }}></img>
             </a>
