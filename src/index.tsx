@@ -12,6 +12,7 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement!);
 
 root.render(
+
   <ThemeProvider theme={theme}>
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
     <CssBaseline />
@@ -19,7 +20,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/gems/:id" element={<Gems />} />
+          <Route path="/haiku/:id" element={<Gems />} />
         </Routes>
       </BrowserRouter>
     </ThirdwebProvider>

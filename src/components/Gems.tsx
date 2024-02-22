@@ -6,20 +6,14 @@ const Gems = () => {
   let params = useParams();
   //params.id returns id of the gem
   return (
-    <Box sx={{ p: 4, background: "black", height: "100vh", color: "white" }}>
+      <Box sx={{display:"flex", maxWidth: "100%", maxHeight: "100%" , overflow: "hidden", }}>
       <img
-        style={{
-          marginTop: ".75rem",
-          height: 175,
-          width: 175,
-          marginLeft: "calc(50% - 62px)",
-          position: "absolute",
-        }}
-        src={"/logo-latest.png"}
-        alt={"1"}
+      style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'contain' , background:"black"}}
+        src={`/haiku/${params.id}.png`}  
+        alt={params.id}
         loading="lazy"
       />
-    </Box>
+      </Box>
   );
 };
 
