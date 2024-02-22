@@ -20,7 +20,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/haiku/:id" element={<Gems />} />
+          <Route path="/:id" element={<Gems />} />
         </Routes>
       </BrowserRouter>
     </ThirdwebProvider>
