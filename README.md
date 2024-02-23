@@ -20,6 +20,7 @@ npm start
 
 or:
 
+
 <!-- #default-branch-switch -->
 
 [![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/create-react-app-with-typescript)
