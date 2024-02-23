@@ -6,23 +6,25 @@ import styles from "./components/styles.module.css";
 import { CONTENT } from "./components/constants";
 import BubbleMap from "./components/BubbleMap";
 import DrawerAppBar, { Tabs } from "./components/TopBar";
-import MintModal from "./components/MintModal";
+import MintGallery from "./components/MintGallery";
+import ReactPlayer from "react-player/youtube";
 
 export default function App() {
   // const video = React.useRef<HTMLVideoElement>(null);
   const [videoMuted, setVideoMuted] = React.useState<boolean>(true);
   const collectionRef = React.useRef<HTMLDivElement>(null);
+  const processRef = React.useRef<HTMLDivElement>(null);
   const visionRef = React.useRef<HTMLDivElement>(null);
   const artistRef = React.useRef<HTMLDivElement>(null);
   const journeyRef = React.useRef<HTMLDivElement>(null);
-  const [mintOpen, setMintOpen] = React.useState(false);
+  const [mintGalleryOpen, setMintGalleryOpen] = React.useState(false);
 
   const onMintClose = () => {
-    setMintOpen(false);
+    setMintGalleryOpen(false);
   };
 
   const onMintOpen = () => {
-    setMintOpen(true);
+    setMintGalleryOpen(true);
   };
   React.useEffect(() => {
     setTimeout(() => {
@@ -34,6 +36,11 @@ export default function App() {
     switch (type) {
       case Tabs.collection:
         collectionRef.current?.scrollIntoView(
+          isMobile ? true : { behavior: "smooth" }
+        );
+        break;
+      case Tabs.process:
+        processRef.current?.scrollIntoView(
           isMobile ? true : { behavior: "smooth" }
         );
         break;
@@ -55,7 +62,7 @@ export default function App() {
     }
   };
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", background: "black" }}>
       <DrawerAppBar onMenuClick={scrollTo} onMintOpen={onMintOpen} />
       <Box
         component="main"
@@ -63,24 +70,10 @@ export default function App() {
         className={styles.videoWrapper}
       >
         <Toolbar />
-        {
-          <video
-            loop
-            autoPlay
-            muted
-            playsInline={true}
-            controls={false}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              position: "fixed",
-            }}
-          >
-            <source src="/welcome.mp4" type="video/mp4" />
-          </video>
-        }
-        <Box style={{ color: "white", position: "sticky" }}>
+
+        <Box
+          style={{ color: "white", position: "sticky", background: "black" }}
+        >
           <Toolbar />
 
           {collectionRef && (
@@ -91,27 +84,27 @@ export default function App() {
                   {CONTENT.COLLECTION.BODY}
                 </div>
               </Box>
-              <Box className={styles.cardOpaque}>
-                <img
-                  src={"./democratization.png"}
-                  style={{
-                    height: "70%",
-                    width: "70%",
-                    maxHeight: 700,
-                    maxWidth: 700,
-                  }}
+              <Box className={styles.cardVideo}>
+                <ReactPlayer
+                  url={"https://youtu.be/q_Rn-sUn2w4"}
+                  width={"100%"}
                 />
-                <p style={{paddingBottom: 20}}>
-                  For instance, this is one of the 33 butterflies in the
-                  collection
-                  
-                </p>
               </Box>
             </div>
           )}
-          <MintModal isOpen={mintOpen} onClose={onMintClose} />
+          <MintGallery isOpen={mintGalleryOpen} onClose={onMintClose} />
+          {processRef && (
+            <div ref={processRef} style={{ paddingTop: 10 }}>
+              <Box className={styles.card}>
+                <div style={{ textAlign: "justify" }}>
+                  <p className={styles.cardTitle}>{CONTENT.PROCESS.HEADER}</p>
+                  {CONTENT.PROCESS.BODY}
+                </div>
+              </Box>
+            </div>
+          )}
           {visionRef && (
-            <div ref={visionRef} style={{ paddingTop: 10 }}>
+            <div ref={visionRef} style={{ paddingTop: 10 }} className="bg-dark">
               <Box className={styles.card}>
                 <div style={{ textAlign: "justify" }}>
                   <p className={styles.cardTitle}>{CONTENT.VISION.HEADER}</p>
@@ -136,7 +129,10 @@ export default function App() {
               style={{ paddingTop: 10, paddingBottom: "20%" }}
             >
               <Box className={styles.card}>
-                <p className={styles.cardTitle}>Journey</p>
+                <div style={{ textAlign: "justify" }}>
+                  <p className={styles.cardTitle}>{CONTENT.JOURNEY.HEADER}</p>
+                  {CONTENT.JOURNEY.BODY}
+                </div>
                 <BubbleMap />
               </Box>
             </div>
@@ -157,7 +153,7 @@ export default function App() {
         variant="outlined"
       >
         <Typography variant="caption" color="white">
-          Copyright ©2022 · [Created by GMWeb3 Studios]
+          Copyright © {new Date().getFullYear()} · [Created by GMWeb3 Studios]
         </Typography>
       </Paper>
     </Box>

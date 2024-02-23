@@ -13,7 +13,7 @@ import {
   useDisconnect,
   useMetamask,
   useNetworkMismatch,
-  useSDK
+  useSDK,
 } from "@thirdweb-dev/react";
 import { useWalletConnect } from "@thirdweb-dev/react";
 import { SmartContract } from "@thirdweb-dev/sdk";

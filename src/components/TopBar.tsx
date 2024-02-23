@@ -17,6 +17,7 @@ import MintModal from "./MintModal";
 export enum Tabs {
   mint = "Mint",
   collection = "Collection",
+  process = "Process",
   vision = "Vision",
   artist = "Artist",
   journey = "Journey",
@@ -35,6 +36,7 @@ const drawerWidth = "100%";
 const navItems: Tabs[] = [
   Tabs.mint,
   Tabs.collection,
+  Tabs.process,
   Tabs.vision,
   Tabs.artist,
   Tabs.journey,
@@ -51,12 +53,12 @@ export default function DrawerAppBar(props: Props) {
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <img
         style={{ marginTop: "1rem", height: 50, width: 50 }}
-        src={"/logo720.png"}
+        src={"/logo-latest.png"}
         alt={"1"}
         loading="lazy"
       />
       <Typography variant="h6">
-        <p className={styles.logofont}>Butterfly Bubble</p>
+        <p className={styles.logofont}>Processed Feed</p>
       </Typography>
       <Divider />
       <List>
@@ -66,9 +68,9 @@ export default function DrawerAppBar(props: Props) {
               onClick={() => {
                 console.log("clicked", item);
                 props.onMenuClick(item, true);
-                if(item === Tabs.mint)props.onMintOpen();
+                if (item === Tabs.mint) props.onMintOpen();
               }}
-              sx={{ textAlign: "center", justifyContent:"center" }}
+              sx={{ textAlign: "center", justifyContent: "center" }}
             >
               <p>{item}</p>
             </ListItemButton>
@@ -95,14 +97,14 @@ export default function DrawerAppBar(props: Props) {
           <a target="_blank" href={"https://instagram.com/snoozedsneeze"}>
             <img
               src={"./instagramlogocolor.png"}
-              style={{ width: 25, height: 25 , marginRight: 10  }}
+              style={{ width: 25, height: 25, marginRight: 10 }}
             ></img>
           </a>
-          <a target="_blank" href={"https://opensea.io/collection/butterfly-bubble"}>
-            <img
-              src={"./osblue.png"}
-              style={{ width: 25, height: 25 }}
-            ></img>
+          <a
+            target="_blank"
+            href={"https://opensea.io/collection/processedfeed"}
+          >
+            <img src={"./osblue.png"} style={{ width: 25, height: 25 }}></img>
           </a>
         </div>
       </List>
@@ -133,17 +135,17 @@ export default function DrawerAppBar(props: Props) {
           >
             <img
               style={{
-                marginTop: "2rem",
+                marginTop: ".75rem",
                 height: 75,
                 width: 75,
                 marginLeft: "calc(50% - 62px)",
                 position: "absolute",
               }}
-              src={"/logo720.png"}
+              src={"/logo-latest.png"}
               alt={"1"}
               loading="lazy"
             />
-            <p className={styles.logofont}>Butterfly Bubble</p>
+            <p className={styles.logofont}>Processed Feed</p>
           </Typography>
           <div></div>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
@@ -152,12 +154,12 @@ export default function DrawerAppBar(props: Props) {
                 onClick={() => {
                   console.log("clicked", item);
                   props.onMenuClick(item);
-                  if(item === Tabs.mint)props.onMintOpen();
+                  if (item === Tabs.mint) props.onMintOpen();
                 }}
                 key={item}
-                sx={{ color: "#fff", alignContent:"center" }}
+                sx={{ color: "#fff", alignContent: "center" }}
               >
-                  <p>{item}</p>
+                <p>{item}</p>
               </Button>
             ))}
             <a
@@ -176,12 +178,12 @@ export default function DrawerAppBar(props: Props) {
                 style={{ width: 20, height: 20, marginRight: 10 }}
               ></img>
             </a>
-            <a target="_blank" href={"https://opensea.io/collection/butterfly-bubble"}>
-            <img
-              src={"./os.png"}
-              style={{ width: 20, height: 20 }}
-            ></img>
-          </a>
+            <a
+              target="_blank"
+              href={"https://opensea.io/collection/processedfeed"}
+            >
+              <img src={"./os.png"} style={{ width: 20, height: 20 }}></img>
+            </a>
           </Box>
         </Toolbar>
       </AppBar>
